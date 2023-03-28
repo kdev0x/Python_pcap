@@ -1,0 +1,21 @@
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+
+# naif = Person("Naif", 10)
+
+# for p in naif.name:
+#     print(p)
+
+
+p = [
+    [Person("Naif", 10), Person("Badr", 20)],
+    [Person("Sari", 30), Person("Nasser", 40)],
+    [Person("Nora", 30), Person("Aljawhara", 35)]              
+]
+
+for x in p:
+    for y in x:
+        print(y.name, y.age)
