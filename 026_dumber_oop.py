@@ -1,46 +1,49 @@
-class App:
-    def __init__(self, name, version):
-        self.name = name
-        self.version = version
+class Course:
+    def __init__(self,instructor,subject,description):
+        self.instructor  = instructor
+        self.subject = subject
+        self.description = description
+        self.rating = 0
 
-    def __str__(self):
-        return "The name is " + self.name + "and the version is " + str(self.version)
-
-class Apps:
-    def __init__(self):
-        self.apps = []
-    
-    def add_app(self, app):
-        if(isinstance(app, App)):
-            self.apps.append(app)
-        else:
-            print("app argument must be an App object")
-    
     def print(self):
-        for app in self.apps:
-            print(app.name, "(", app.version, ")")
+        print(self.instructor , self.subject , self.description)
     
     def __str__(self):
-        result = ""
-        for app in self.apps:
-            result = result + app.name + " "
-        
-        return result
-    
-    def __len__(self):
-        return len(self.apps)
+        return self.subject + ", " + self.description + ", " + self.instructor
 
-    def __contains__(self, name):
-        for app in self.apps:
-            if app.name == name:
+    def set_rating(self,rating):
+        self.rating = rating
+
+
+class Courses:
+    def __init__(self):
+        self.courses = []
+
+    def add(self, course):
+        self.courses.append(course)
+
+    def __len__(self):
+        return len(self.courses)
+
+    def __contains__(self, subject):
+        for course in self.courses:
+            if subject == course.subject:
                 return True
         return False
 
-# abc = App("Python", 1)
-apps = Apps()
-apps.add_app(App("ScreenFlow", 1))
-apps.add_app(App("Snagit", 2))
+    def print(self):
+        for course in self.courses:
+            print(course) 
 
-print("Snagit``````````" in apps)
+c = Courses()
 
-apps()
+c.add(Course("sari", "C", "long course"))
+c.add(Course("aljawharah","python","good course"))
+c.add(Course("khalid","html","very very easy"))
+
+print(len(c))
+
+print("Java" in c)
+print("python" in c)
+
+c.print()
